@@ -1,0 +1,27 @@
+.cardContainer {
+    width: 100%;
+    text-align: center;
+
+    .cardTitle {
+        font-size: 20px;
+        color: #000000;
+        ;
+        font-weight: 500;
+        margin: 10px 0px;
+    }
+
+    .full-width-field {
+        width: 80%;
+    }
+
+    .btnColor {
+        background-color: #02323c;
+        color: white !important;
+        border: #02323c;
+        border-radius: 5px;
+        margin: 20px 2%;
+        width: 20%;
+        padding: 10px 0;
+
+    }
+}

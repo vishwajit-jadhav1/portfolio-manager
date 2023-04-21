@@ -1,0 +1,15 @@
+<app-navbar></app-navbar>
+<mat-sidenav-container class="example-container" class="sidebar">
+  <mat-sidenav class="sidebarContaint" mode="side" opened={{isOpen}}>
+    <li *ngFor="let item of routes" let a="item.path">
+      <a routerLink={{item.path}} routerLinkActive="active">
+        <span class="menu_title"> {{item.title}}</span>
+      </a>
+    </li>
+
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

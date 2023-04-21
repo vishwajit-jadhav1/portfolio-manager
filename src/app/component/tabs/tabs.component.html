@@ -1,0 +1,38 @@
+<!-- <mat-tab-group (selectedTabChange)="handelTabChange($event.tab.textLabel)">
+    <mat-tab label="Draft">
+        <app-people-list [tab]="activeTab"></app-people-list>
+    </mat-tab>
+    <mat-tab label="Active">
+        <app-people-list [tab]="activeTab"></app-people-list>
+    </mat-tab>
+
+    <mat-tab label="Retired">
+        <app-people-list [tab]="activeTab"></app-people-list></mat-tab>
+</mat-tab-group> -->
+
+<div class="main">
+
+    <mat-tab-group (selectedTabChange)="handelTabChange($event.tab.textLabel)">
+
+        <mat-tab label="Draft">
+            <div *ngIf="activeTab=='' || activeTab=='Draft'">
+                <app-people-list [tab]="activeTab"></app-people-list>
+
+            </div>
+        </mat-tab>
+
+        <mat-tab label="Active">
+            <div *ngIf="activeTab=='Active'">
+
+                <app-people-list [tab]="activeTab"></app-people-list>
+            </div>
+        </mat-tab>
+
+        <mat-tab label="Retired">
+            <div *ngIf="activeTab=='Retired'">
+                <app-people-list [tab]="activeTab"></app-people-list>
+
+            </div>
+        </mat-tab>
+    </mat-tab-group>
+</div>

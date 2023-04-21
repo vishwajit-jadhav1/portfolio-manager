@@ -1,0 +1,1 @@
+export const baseUrl = "https://jllsa-dev.iwmsapp.com/tririga/p/webapi/rest/v2/"

@@ -1,0 +1,31 @@
+<mat-card id="card" class="cardContainer">
+    <mat-card-title class="cardTitle">
+        {{title | uppercase}}
+    </mat-card-title>
+    <mat-card-content>
+        <form (ngSubmit)="onSubmit()" #heroForm="ngForm">
+            <mat-form-field appearance="outline" class="full-width-field">
+                <mat-label for="id">ID</mat-label>
+                <input matInput name="id" id="'id" [(ngModel)]="model.id" required>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="full-width-field">
+                <mat-label for="name">Name</mat-label>
+                <input matInput name="name" id="'name" [(ngModel)]="model.name" required>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="full-width-field">
+                <mat-label>Email</mat-label>
+                <input matInput name="eMail" [(ngModel)]="model.eMail" required>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="full-width-field">
+                <mat-label>Contact Number</mat-label>
+                <input matInput name="workPhone" [(ngModel)]="model.workPhone" required>
+            </mat-form-field>
+            <br>
+            <button mat-raised-button class="btnColor" type="submit">Save</button>
+            <button mat-raised-button type="button" class="btnColor" (click)="onClose()"> Cancel</button>
+        </form>
+
+
+    </mat-card-content>

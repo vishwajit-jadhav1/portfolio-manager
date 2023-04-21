@@ -1,0 +1,73 @@
+<div class="example-button-row">
+    <div class="example-flex-container">
+
+        <mat-form-field appearance="outline">
+            <input matInput placeholder="Search .." (keyup)="applyFilter($event)" #input>
+            <mat-icon matSuffix>search</mat-icon>
+        </mat-form-field>
+
+
+        <div class="example-button-container">
+            <button mat-fab color="primary" (click)="addNewUser()">
+                <mat-icon>add</mat-icon>
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- <button mat-button color="primary" class="button" (click)="addNewUser()">Add User</button> -->
+
+
+
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8 table">
+    <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef> Id </th>
+        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+    </ng-container>
+
+    <!--  Name Column -->
+    <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.name?element.name:"--"}} </td>
+    </ng-container>
+
+
+
+    <!-- email Column -->
+    <ng-container matColumnDef="eMail">
+        <th mat-header-cell *matHeaderCellDef> email </th>
+        <td mat-cell *matCellDef="let element"> {{element.eMail?element.eMail:"--"}} </td>
+    </ng-container>
+
+    <!-- contact  Column -->
+    <ng-container matColumnDef="workPhone">
+        <th mat-header-cell *matHeaderCellDef> Contact No </th>
+        <td mat-cell *matCellDef="let element"> {{element.workPhone?element.workPhone:"--"}} </td>
+    </ng-container>
+
+    <!-- Number Column -->
+    <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef> Status </th>
+        <td mat-cell *matCellDef="let element"> {{element.status}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef> Action </th>
+        <td mat-cell *matCellDef="let element" class="action">
+            <mat-icon (click)="editRecord('0ms', '0ms',element)">edit</mat-icon>
+        </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="editContact('j')"></tr>
+    <!-- Row shown when there is no matching data. -->
+    <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+    </tr>
+</table>
+
+
+
+
+<mat-paginator [pageSizeOptions]="paginationOption" showFirstLastButtons aria-label="Select page of periodic elements">
+</mat-paginator>
