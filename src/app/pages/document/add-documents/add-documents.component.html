@@ -1,0 +1,28 @@
+<mat-card id="card" class="cardContainer">
+    <mat-card-title class="cardTitle">
+        Add Document
+    </mat-card-title>
+    <mat-card-content>
+        <form (ngSubmit)="onSubmit()" #heroForm="ngForm">
+            <mat-form-field class="full-width-field">
+                <mat-label>Add description </mat-label>
+                <textarea matInput placeholder="Add description" name="description"
+                    [(ngModel)]="model.description"></textarea>
+            </mat-form-field>
+
+
+            <input type="file" class="file-input" (change)="aploadDocs($event)" #fileUpload>
+            <div class="file-upload">
+                <button type="button" mat-mini-fab color="primary" class="upload-btn mat-elevation-z0"
+                    (click)="fileUpload.click()">
+                    <mat-icon>attach_file</mat-icon>
+                </button>
+                {{file || "No file uploaded yet."}}
+            </div>
+            <br>
+            <button mat-raised-button class="btnColor" type="submit">Save</button>
+            <button mat-raised-button type="button" class="btnColor" (click)="onClose()"> Cancel</button>
+        </form>
+
+
+    </mat-card-content>

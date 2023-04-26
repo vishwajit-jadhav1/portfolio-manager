@@ -7,19 +7,8 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 import { AddUpdateUserModalComponent } from '../add-update-user-modal/add-update-user-modal.component';
-// import { userData } from 'src/app/app.types';
+import { userData } from 'src/app/app.types';
 
-/**
- * @title Table with pagination
- */
-
-interface PeriodicElement {
-  name: string;
-  id: number;
-  address: number;
-  status: string;
-  _id: number
-}
 
 @Component({
   selector: 'app-people-list',
@@ -28,9 +17,9 @@ interface PeriodicElement {
 })
 export class PeopleListComponent {
   displayedColumns: string[] = ['id', 'name', 'eMail', 'workPhone', 'status', 'action'];
-  // dataSource: PeriodicElement[]  = []
   dataSource: any
-
+  isIedit: boolean = true
+  hideEditIcon: boolean = false
 
   paginationOption = [5, 10, 20, 50, 100]
   @Input() tab = '';
@@ -41,20 +30,20 @@ export class PeopleListComponent {
     private route: ActivatedRoute) {
   }
 
-
   @ViewChild(MatPaginator)
   paginator!: MatPaginator;
 
 
   ngOnChanges(changes: SimpleChanges) {
+    this.hideEditIcon = changes['tab'].currentValue == "Retired"
     if (changes['tab'].currentValue == "Active") {
-      this.getData("cstPeoplePortfolioActiveVJQRDS", "cstPeoplePortfolioModelVIew")
+      this.getData("cstPeoplePortfolioActiveVJQRDS")
     }
     else if (changes['tab'].currentValue == "Retired") {
-      this.getData("cstPeoplePortfolioRetiredVJQRDS", "cstPeoplePortfolioModelVIew")
+      this.getData("cstPeoplePortfolioRetiredVJQRDS")
     }
     else {
-      this.getData("cstPeoplePortfolioVJQRDS", "cstPeoplePortfolioModelVIew")
+      this.getData("cstPeoplePortfolioVJQRDS")
 
     }
   }
@@ -64,40 +53,55 @@ export class PeopleListComponent {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-  async getData(dataSource: string, modelView: string) {
-    const dd = await this.service.getApiData(dataSource, modelView)
-    this.paginationOption = [...this.paginationOption, dd.length]
-    this.dataSource = new MatTableDataSource<PeriodicElement>(dd);
+  async getData(dataSource: string) {
+    const dd = await this.service.getApiData(dataSource)
+
+
+    this.paginationOption = [...this.paginationOption, dd.data.length]
+    this.dataSource = new MatTableDataSource<userData>(dd.data);
     this.dataSource.paginator = this.paginator;
   }
 
-  // editRecord(data: any) {
-  //   localStorage.setItem("editData", JSON.stringify(data))
-  //   this.router.navigate(['update-user', data._id]);
-  // }
 
-  editRecord(enterAnimationDuration: string, exitAnimationDuration: string, data: any): void {
-    this.dialog.open(AddUpdateUserModalComponent, {
+
+  editRecord(enterAnimationDuration: string, exitAnimationDuration: string, data: userData): void {
+    this.isIedit = false
+    let dialogRef = this.dialog.open(AddUpdateUserModalComponent, {
       width: '40%',
       enterAnimationDuration,
       exitAnimationDuration,
       data: { data, action: "edit" }
     });
-    console.log(data, 'kkk')
-
+    dialogRef.afterClosed().subscribe(updatedData => {
+      // this.dataSource = updatedData.refresh.data
+      this.paginationOption = [...this.paginationOption,]
+      this.dataSource = new MatTableDataSource<userData>(updatedData.refresh.data);
+      this.dataSource.paginator = this.paginator;
+    })
 
   }
 
-  editContact(data: any) {
-    console.log("clicked")
-    this.router.navigate(['user-details', data._id]);
+  editContact(data: userData) {
+    if (this.isIedit) {
+      this.router.navigate(['user', data._id,], { state: { data: data } });
+    }
+    else {
+      this.isIedit = true
+
+    }
   }
 
   addNewUser() {
-    this.dialog.open(AddUpdateUserModalComponent, {
+    let dialogRef = this.dialog.open(AddUpdateUserModalComponent, {
       width: '40%',
       data: { action: "add" }
     });
+    dialogRef.afterClosed().subscribe(updatedData => {
+      // this.dataSource = updatedData.refresh.data
+      this.paginationOption = [...this.paginationOption,]
+      this.dataSource = new MatTableDataSource<userData>(updatedData.refresh.data);
+      this.dataSource.paginator = this.paginator;
+    })
 
   }
 }

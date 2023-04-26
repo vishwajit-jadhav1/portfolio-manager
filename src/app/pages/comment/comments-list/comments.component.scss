@@ -1,0 +1,55 @@
+.example-flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 10px;
+}
+
+.example-button-container {
+    display: flex;
+    justify-content: center;
+    width: 120px;
+}
+
+.backGround {
+    background-color: #02323c;
+}
+
+
+.btnColor {
+    margin-top: 20px;
+    background: #02323c !important;
+    color: #ffffff !important;
+    border: #02323c;
+
+}
+
+.example-header-image {
+    background-image: url('../../../../assets/profile.jfif');
+    background-size: cover;
+}
+
+
+
+.image {
+    position: absolute;
+    right: 0px;
+    margin-right: 10px;
+}
+
+.item {
+    width: 100%;
+    margin: 5px;
+
+
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+
+}
+
+.container>div {
+    flex: 45%;
+    margin-bottom: 10px;
+}

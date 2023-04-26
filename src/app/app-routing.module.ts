@@ -1,13 +1,9 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { NgModule, OnInit } from '@angular/core';
+import { ActivatedRoute, NavigationEnd, Router, RouterModule, Routes } from '@angular/router';
 import { routes } from './component/sidebar/sidebar';
-
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SidebarComponent } from './component/sidebar/sidebar.component';
-import { NavbarComponent } from './component/navbar/navbar.component';
-import { DeleteModalComponent } from './component/delete-modal/delete-modal.component';
-import { SnackbarComponent } from './component/snackbar/snackbar.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
@@ -25,26 +21,29 @@ import { UserDetailsComponent } from './pages/user-details/user-details.componen
 import { MyProfileComponent } from './pages/my-profile/my-profile.component';
 import { SecurityComponent } from './pages/security/security.component';
 import { LicensesComponent } from './pages/licenses/licenses.component';
-import { CommentsComponent } from './pages/comments/comments.component';
-import { DocumentsComponent } from './pages/documents/documents.component';
+import { CommentsComponent } from './pages/comment/comments-list/comments.component';
+import { DocumentsComponent } from './pages/document/documents/documents.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatListModule } from '@angular/material/list';
+import { MatCardModule } from '@angular/material/card';
+import { FormsModule } from '@angular/forms';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { TableComponent } from './component/table/table.component';
 
 
 
 
 @NgModule({
   declarations: [
-    DeleteModalComponent,
-    SnackbarComponent,
     TabsComponent,
-    // TableComponent,
-    PeopleListComponent,
     PeoplesComponent,
     UserDetailsComponent,
     MyProfileComponent,
     SecurityComponent,
     LicensesComponent,
     CommentsComponent,
+    PeopleListComponent,
+    TableComponent,
     DocumentsComponent],
 
   imports: [BrowserAnimationsModule,
@@ -58,7 +57,24 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     HttpClientModule,
     MatInputModule,
     MatFormFieldModule,
+    MatListModule,
+    MatCardModule,
+    MatFormFieldModule,
+    FormsModule,
+    MatGridListModule,
     RouterModule.forRoot(routes, { useHash: true })],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule implements OnInit {
+  constructor(private router: Router) {
+    router.events.subscribe((val) => {
+    });
+
+  }
+  ngOnInit(): void {
+
+  }
+  //   ngOnChange(): void {
+  //     console.log(this.activatedRoute.snapshot.paramMap.get('id'), " this.activatedRoute.snapshot.paramMap.get('id');")
+  //   }
+}

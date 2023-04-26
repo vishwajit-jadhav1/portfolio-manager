@@ -1,1 +1,15 @@
-<p>licenses works!</p>
+<div class="example-button-row">
+    <div class="example-flex-container">
+
+        <mat-form-field appearance="outline" style="width: 500px;">
+            <input matInput placeholder="Search .." (keyup)="applyFilter($event)" #input>
+            <mat-icon matSuffix>search</mat-icon>
+        </mat-form-field>
+    </div>
+</div>
+
+<app-table [dataSource]="dataSource" [tabeData]="tabeData" [displayedColumns]="displayedColumns">
+</app-table>
+
+<mat-paginator [pageSizeOptions]="paginationOption" showFirstLastButtons aria-label="Select page of periodic elements">
+</mat-paginator>

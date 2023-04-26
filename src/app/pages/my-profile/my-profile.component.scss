@@ -1,0 +1,25 @@
+p {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.example-header-image {
+    background-image: url('../../../assets/profile.jfif');
+    background-size: cover;
+}
+
+
+.noData {
+    text-align: center;
+    margin-top: 10%;
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.btnColor {
+    margin-top: 20px;
+    background: #02323c !important;
+    color: #ffffff !important;
+    border: #02323c;
+
+}

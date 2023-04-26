@@ -5,8 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SidebarComponent } from './component/sidebar/sidebar.component';
-import { NavbarComponent } from './component/navbar/navbar.component';
-import { DeleteModalComponent } from './component/delete-modal/delete-modal.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
@@ -25,6 +23,12 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
+import { TabsComponent } from './component/tabs/tabs.component';
+import { PeopleListComponent } from './component/people-list/people-list.component';
+import { MatListModule } from '@angular/material/list';
+import { AddCommentsComponent } from './pages/comment/add-comments/add-comments.component';
+import { AddDocumentsComponent } from './pages/document/add-documents/add-documents.component';
+import { TableComponent } from './component/table/table.component';
 
 
 @NgModule({
@@ -33,8 +37,10 @@ import { MatCardModule } from '@angular/material/card';
     SidebarComponent,
     NotFoundComponent,
     // DeleteModalComponent,
-    NavbarComponent,
     AddUpdateUserModalComponent,
+    AddCommentsComponent,
+    AddDocumentsComponent,
+
 
   ],
   imports: [
@@ -44,9 +50,9 @@ import { MatCardModule } from '@angular/material/card';
     MatToolbarModule,
     MatIconModule,
     MatButtonModule,
-    // MatTabsModule,
-    // MatDialogModule,
-    // MatTableModule,
+    MatTabsModule,
+    MatDialogModule,
+    MatTableModule,
     MatPaginatorModule,
     HttpClientModule,
     MatSidenavModule,
@@ -55,6 +61,8 @@ import { MatCardModule } from '@angular/material/card';
     MatInputModule,
     FormsModule,
     MatCardModule,
+    MatListModule,
+
 
 
 

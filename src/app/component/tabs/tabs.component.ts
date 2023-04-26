@@ -20,8 +20,6 @@ export class TabsComponent {
   activeTab = ''
   handelTabChange(value: string) {
     this.activeTab = value
-    console.log("vv", value)
-    // alert('jj')
   }
 
 

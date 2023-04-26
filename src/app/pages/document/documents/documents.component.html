@@ -1,0 +1,62 @@
+<div class="example-button-row">
+    <div class="example-flex-container">
+
+        <mat-form-field appearance="outline" style="width: 500px;">
+            <input matInput placeholder="Search .." (keyup)="applyFilter($event)" #input>
+            <mat-icon matSuffix>search</mat-icon>
+        </mat-form-field>
+
+
+        <div class="example-button-container">
+            <button mat-fab class="backGround" (click)="addNewDocument()">
+                <mat-icon>add</mat-icon>
+            </button>
+        </div>
+    </div>
+</div>
+
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8 table">
+    <ng-container sticky sticky matColumnDef="_id">
+        <th mat-header-cell *matHeaderCellDef> Id </th>
+        <td mat-cell *matCellDef="let element"> {{element._id}} </td>
+    </ng-container>
+
+
+
+    <ng-container sticky sticky matColumnDef="documentName">
+        <th mat-header-cell *matHeaderCellDef> Document Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.documentName?element.documentName:"--"}} </td>
+    </ng-container>
+
+    <ng-container sticky sticky matColumnDef="description">
+        <th mat-header-cell *matHeaderCellDef>Description</th>
+        <td mat-cell *matCellDef="let element"> {{element.description?element.description:"--"}} </td>
+    </ng-container>
+
+
+
+    <ng-container sticky sticky matColumnDef="documentStatus">
+        <th mat-header-cell *matHeaderCellDef> Document Status </th>
+        <td mat-cell *matCellDef="let element"> {{element.documentStatus?element.documentStatus:"--"}} </td>
+    </ng-container>
+
+    <ng-container sticky sticky matColumnDef="createdDateTime">
+        <th mat-header-cell *matHeaderCellDef> Created Date Time </th>
+        <td mat-cell *matCellDef="let element"> {{element.createdDateTime| date}} </td>
+    </ng-container>
+
+    <ng-container sticky sticky matColumnDef="openNewTab">
+        <th mat-header-cell *matHeaderCellDef> Open In New Tab</th>
+        <td mat-cell *matCellDef="let element">
+            <button mat-icon-button style="color: #02323c;" (click)="showImage(element.fileName)">
+                <mat-icon>launch</mat-icon>
+            </button>
+        </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns; "></tr>
+</table>
+
+<mat-paginator [pageSizeOptions]="paginationOption" showFirstLastButtons aria-label="Select page of periodic elements">
+</mat-paginator>

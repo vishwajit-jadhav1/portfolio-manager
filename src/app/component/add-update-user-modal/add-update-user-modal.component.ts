@@ -15,11 +15,13 @@ export class AddUpdateUserModalComponent implements OnInit {
   model = {
     eMail: "",
     id: "",
-    name: "",
+    firstName: "",
+    lastName: "",
     status: "",
     workPhone: "",
-    _id: ""
+    _id: 0
   }
+  responseData: any
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
     public dialogRef: MatDialogRef<AddUpdateUserModalComponent>,
@@ -42,16 +44,23 @@ export class AddUpdateUserModalComponent implements OnInit {
 
   async onSubmit() {
     let payload = {
-      name: this.model.name,
+      firstName: this.model.firstName,
+      lastName: this.model.lastName,
       workPhone: this.model.workPhone,
       eMail: this.model.eMail,
       id: this.model.id,
       //  _id: this.model._id
     }
-    //   await this.service.updateData(payload, 'cstPeoplePortfolioModelVIew', 'cstPeoplePortfolioVJQRDS',)
-    await this.service.postData(payload, 'cstPeoplePortfolioModelVIew', 'cstPeoplePortfolioVJQRDS', 'createNewPortfolioRecordAGVJ', 'createNewPortfolioRecordVJ')
 
-    this.dialogRef.close();
+    if (this.data.action == "edit") {
+      this.responseData = await this.service.updateData({ ...payload, _id: this.model._id }, 'cstPeoplePortfolioVJQRDS',)
+
+    }
+    else {
+      this.responseData = await this.service.postData(payload, 'cstPeoplePortfolioVJQRDS', 'createNewPortfolioRecordAGVJ', 'createNewPortfolioRecordVJ')
+
+    }
+    this.dialogRef.close(this.responseData);
   }
 
 

@@ -1,14 +1,29 @@
-.sidebar {
-  height: 100%;
+.sidebarContaint {
+  background: #02323c;
+
+}
+
+
+
+mat-sidenav {
+  border-right: none;
+  //text-align: center;
+  width: 180px;
   margin-top: 1px;
 }
 
-.sidebarContaint {
-  width: 18%;
-  height: auto;
-  overflow: hidden;
-  background: #02323c;
+mat-sidenav-container {
+  height: 92%;
+}
 
+.navbar-icon {
+  padding-right: 5px;
+}
+
+.header {
+  font-size: 16px;
+  background: #02323c;
+  color: #ffffff;
 }
 
 span {
@@ -20,29 +35,6 @@ span {
 
 }
 
-
 .active span {
   color: #de5801;
-}
-
-li {
-  list-style-type: none;
-  margin: 10% 0% 0% 20%;
-  font-size: 15px;
-}
-
-a {
-  text-decoration: none;
-
-}
-
-.header {
-  background: #02323c;
-  color: #ffffff;
-
-
-}
-
-.example-spacer {
-  flex: 1 1 auto;
 }

@@ -1,0 +1,78 @@
+<div class="example-button-row">
+    <div class="example-flex-container">
+
+        <mat-form-field appearance="outline" style="width: 500px;">
+            <input matInput placeholder="Search .." (keyup)="applyFilter($event)" #input>
+            <mat-icon matSuffix>search</mat-icon>
+        </mat-form-field>
+
+
+        <div class="example-button-container">
+            <button mat-fab class="backGround" (click)="addNewComment()">
+                <mat-icon>add</mat-icon>
+            </button>
+        </div>
+    </div>
+</div>
+
+
+<div class="container">
+    <div class="item" *ngFor="let item of dataSource">
+        <mat-card>
+            <mat-card-header>
+                <div mat-card-avatar class="example-header-image"></div>
+                <mat-card-title>{{item.name}}</mat-card-title>
+                <mat-card-subtitle>{{item.createdDateTime | date}}</mat-card-subtitle>
+                <div class="image">
+                    <img *ngIf="item.photo" mat-card-sm-image [src]="showImage(item.photo)">
+                </div>
+            </mat-card-header>
+            <mat-card-content>
+                <div>
+                    {{item.comment}}
+                </div>
+            </mat-card-content>
+
+        </mat-card>
+    </div>
+
+
+
+    <!-- <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 table">
+    <ng-container sticky sticky matColumnDef="_id">
+        <th mat-header-cell *matHeaderCellDef> Id </th>
+        <td mat-cell *matCellDef="let element"> {{element._id}} </td>
+    </ng-container>
+
+
+
+    <ng-container sticky sticky matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> name </th>
+        <td mat-cell *matCellDef="let element"> {{element.name?element.name:"--"}} </td>
+    </ng-container>
+
+    <ng-container sticky sticky matColumnDef="comment">
+        <th mat-header-cell *matHeaderCellDef> Comment </th>
+        <td mat-cell *matCellDef="let element"> {{element.comment?element.comment:"--"}} </td>
+    </ng-container>
+
+    <ng-container sticky sticky matColumnDef="commentType">
+        <th mat-header-cell *matHeaderCellDef> Comment Type </th>
+        <td mat-cell *matCellDef="let element"> {{element.commentType?element.commentType:"--"}} </td>
+    </ng-container>
+
+    <ng-container sticky sticky matColumnDef="createdDateTime">
+        <th mat-header-cell *matHeaderCellDef> Created Date Time </th>
+        <td mat-cell *matCellDef="let element"> {{element.createdDateTime?element.createdDateTime:"--"}} </td>
+    </ng-container>
+
+
+
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns; "></tr>
+</table>
+
+
+<mat-paginator [pageSizeOptions]="paginationOption" showFirstLastButtons aria-label="Select page of periodic elements">
+</mat-paginator> -->

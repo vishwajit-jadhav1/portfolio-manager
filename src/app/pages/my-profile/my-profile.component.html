@@ -1,1 +1,37 @@
-<p>my-profile works!</p>
+<mat-card class="example-card" *ngIf="data!=undefined">
+    <mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-title>{{data?.name?data.name:"-"}}</mat-card-title>
+        <mat-card-subtitle>{{data?._id?data._id:"-"}}</mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+        <p>
+            Name : {{data?.name?data.name:"-"}}
+        </p>
+        <p>
+            Id : {{data?.id?data.id:"-"}}
+        </p>
+
+        <p>
+            Address : {{data?.address?data.adress:"-"}}
+        </p>
+
+        <p>
+            Number : {{data?.workPhone?data?.workPhone:"0"}}
+        </p>
+        <p>
+            Status : {{data?.status?data.status:"-"}}
+        </p>
+    </mat-card-content>
+
+</mat-card>
+
+<div *ngIf="data==undefined" class="noData">
+    No record associated with this profile
+    <div>
+        <a routerLink="/" routerLinkActive="active" ariaCurrentWhenActive="page"><button mat-raised-button
+                class="btnColor">
+                Go To Dashboard</button></a>
+    </div>
+</div>

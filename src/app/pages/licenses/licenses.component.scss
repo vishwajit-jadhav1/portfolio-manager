@@ -1,0 +1,34 @@
+.mat-column-name {
+    height: 10px;
+}
+
+.example-flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 10px;
+}
+
+.example-button-container {
+    display: flex;
+    justify-content: center;
+    width: 120px;
+}
+
+.backGround {
+    background-color: #02323c;
+}
+
+.noData {
+    text-align: center;
+    margin-top: 10%;
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.btnColor {
+    margin-top: 20px;
+    background: #02323c !important;
+    color: #ffffff !important;
+    border: #02323c;
+
+}

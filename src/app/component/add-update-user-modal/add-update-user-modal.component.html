@@ -9,9 +9,15 @@
                 <input matInput name="id" id="'id" [(ngModel)]="model.id" required>
             </mat-form-field>
             <mat-form-field appearance="outline" class="full-width-field">
-                <mat-label for="name">Name</mat-label>
-                <input matInput name="name" id="'name" [(ngModel)]="model.name" required>
+                <mat-label for="firstName">First Name</mat-label>
+                <input matInput name="firstName" id="'firstName" [(ngModel)]="model.firstName" required>
             </mat-form-field>
+
+            <mat-form-field appearance="outline" class="full-width-field">
+                <mat-label for="lastName">Last Name</mat-label>
+                <input matInput name="lastName" id="'lastName" [(ngModel)]="model.lastName" required>
+            </mat-form-field>
+
 
             <mat-form-field appearance="outline" class="full-width-field">
                 <mat-label>Email</mat-label>
